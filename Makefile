@@ -26,7 +26,7 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /opt/perl-5.8.3/lib/5.8.3/darwin-2level/Config.pm)
+# These definitions are from config.sh (via /opt/perl-5.8.5/lib/5.8.5/darwin-2level/Config.pm)
 
 # They may have been overridden via Makefile.PL or on the command line
 AR = ar
@@ -42,10 +42,10 @@ LIBC = /usr/lib/libc.dylib
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = darwin
-OSVERS = 7.3.0
+OSVERS = 7.5.0
 RANLIB = /usr/bin/ar ts
-SITELIBEXP = /opt/perl-5.8.3/lib/site_perl/5.8.3
-SITEARCHEXP = /opt/perl-5.8.3/lib/site_perl/5.8.3/darwin-2level
+SITELIBEXP = /opt/perl-5.8.5/lib/site_perl/5.8.5
+SITEARCHEXP = /opt/perl-5.8.5/lib/site_perl/5.8.5/darwin-2level
 SO = dylib
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
@@ -76,18 +76,18 @@ MAN3EXT = 3
 INSTALLDIRS = site
 DESTDIR = 
 PREFIX = 
-PERLPREFIX = /opt/perl-5.8.3
-SITEPREFIX = /opt/perl-5.8.3
+PERLPREFIX = /opt/perl-5.8.5
+SITEPREFIX = /opt/perl-5.8.5
 VENDORPREFIX = 
-INSTALLPRIVLIB = $(PERLPREFIX)/lib/5.8.3
+INSTALLPRIVLIB = $(PERLPREFIX)/lib/5.8.5
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = $(SITEPREFIX)/lib/site_perl/5.8.3
+INSTALLSITELIB = $(SITEPREFIX)/lib/site_perl/5.8.5
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
 INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = $(PERLPREFIX)/lib/5.8.3/darwin-2level
+INSTALLARCHLIB = $(PERLPREFIX)/lib/5.8.5/darwin-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = $(SITEPREFIX)/lib/site_perl/5.8.3/darwin-2level
+INSTALLSITEARCH = $(SITEPREFIX)/lib/site_perl/5.8.5/darwin-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
 INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
@@ -111,16 +111,16 @@ INSTALLSITEMAN3DIR = $(SITEPREFIX)/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
 INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /opt/perl-5.8.3/lib/5.8.3
-PERL_ARCHLIB = /opt/perl-5.8.3/lib/5.8.3/darwin-2level
+PERL_LIB = /opt/perl-5.8.5/lib/5.8.5
+PERL_ARCHLIB = /opt/perl-5.8.5/lib/5.8.5/darwin-2level
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = $(FIRST_MAKEFILE).old
 MAKE_APERL_FILE = $(FIRST_MAKEFILE).aperl
 PERLMAINCC = $(CC)
-PERL_INC = /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE
-PERL = /sw/bin/perl -Iinc
-FULLPERL = /sw/bin/perl -Iinc
+PERL_INC = /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE
+PERL = /opt/perl-5.8.5/bin/perl -Iinc
+FULLPERL = /opt/perl-5.8.5/bin/perl -Iinc
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -132,7 +132,7 @@ PERL_CORE = 0
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /opt/perl-5.8.3/lib/5.8.3/ExtUtils/MakeMaker.pm
+MAKEMAKER   = /opt/perl-5.8.5/lib/5.8.5/ExtUtils/MakeMaker.pm
 MM_VERSION  = 6.17
 MM_REVISION = 1.133
 
@@ -311,21 +311,21 @@ config :: $(INST_ARCHAUTODIR)$(DIRFILESEP).exists
 config :: $(INST_AUTODIR)$(DIRFILESEP).exists
 	$(NOECHO) $(NOOP)
 
-$(INST_AUTODIR)/.exists :: /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h
+$(INST_AUTODIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_AUTODIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h $(INST_AUTODIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_AUTODIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_AUTODIR)
 
-$(INST_LIBDIR)/.exists :: /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h
+$(INST_LIBDIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_LIBDIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h $(INST_LIBDIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_LIBDIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_LIBDIR)
 
-$(INST_ARCHAUTODIR)/.exists :: /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h
+$(INST_ARCHAUTODIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_ARCHAUTODIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h $(INST_ARCHAUTODIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_ARCHAUTODIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_ARCHAUTODIR)
 
@@ -333,9 +333,9 @@ config :: $(INST_MAN3DIR)$(DIRFILESEP).exists
 	$(NOECHO) $(NOOP)
 
 
-$(INST_MAN3DIR)/.exists :: /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h
+$(INST_MAN3DIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_MAN3DIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.3/lib/5.8.3/darwin-2level/CORE/perl.h $(INST_MAN3DIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_MAN3DIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_MAN3DIR)
 
@@ -654,7 +654,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /sw/bin/perl
+FULLPERL      = /opt/perl-5.8.5/bin/perl
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) -f $(MAKE_APERL_FILE) $@
@@ -720,7 +720,7 @@ pm_to_blib: $(TO_INST_PM)
 
 
 # End.
-# Postamble by Module::Install 0.33
+# Postamble by Module::Install 0.36
 # --- Module::Install::Admin::Makefile section:
 
 realclean purge ::

@@ -1,4 +1,3 @@
-# Tie::Hash::Expire::Dumb
 package Cache::Simple::TimedExpiry;
 use strict;
 
@@ -9,6 +8,7 @@ $VERSION = '0.21';
 # 0 - expiration delay
 # 1 - hash
 # 2 - expiration queue
+# 3 - last expiration
 
 =head2 new
 
@@ -18,7 +18,7 @@ Set up a new cache object
 
 
 sub new {
-  bless [2,{},[]], "Cache::Simple::TimedExpiry";
+  bless [2,{},[],0], "Cache::Simple::TimedExpiry";
 }
 
 
@@ -60,7 +60,9 @@ Returns undef if there is no such entry
 sub fetch ($$) {
   my ($self,$key) = @_;
 
-    $self->expire();
+  my $time = time;
+  # Only expire 
+  $self->expire($time) if ($time > $self->[3]);
     unless ( $self->has_key($key)) {
           return undef;
      }
@@ -79,17 +81,22 @@ at or after EXPIRYTIME.
 sub set ($$$) {
   my ($self,$key,$value) = @_;
 
-  $self->expire();
+  my $time = time;
+  # Only expire 
+  $self->expire($time) if ($time > $self->[3]);
 
   $self->[1]->{$key} = $value;
 
     push @{$self->[2]}, [ time, $key ];
 }
 
-sub expire ($) {
-  my ($self) = @_;
+sub expire ($$) {
+  my $self = shift;
+  my $time = shift;
+    
+  $self->[3] = $time;
 
-  my $oldest_nonexpired_entry = (time - $self->[0]);
+  my $oldest_nonexpired_entry = ($time - $self->[0]);
  
 
   return unless defined $self->[2]->[0]; # do we have an element in the array?
@@ -106,9 +113,11 @@ sub expire ($) {
 }
 
 sub elements ($) { # keys
-  my ($self) = @_;
+  my $self = shift;
+  my $time = time;
+  # Only expire 
+  $self->expire($time) if ($time > $self->[3]);
 
-  $self->expire();
   return keys %{$self->[1]};
 
 }
