@@ -18,7 +18,7 @@
 #     NO_META => q[1]
 #     PL_FILES => {  }
 #     PREREQ_PM => {  }
-#     VERSION => q[0.21]
+#     VERSION => q[0.23]
 #     dist => { PREOP=>q[$(PERL) -I. -MModule::Install::Admin -e "dist_preop(q($(DISTVNAME)))"] }
 
 # --- MakeMaker post_initialize section:
@@ -26,31 +26,31 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /opt/perl-5.8.5/lib/5.8.5/darwin-2level/Config.pm)
+# These definitions are from config.sh (via /usr/lib/perl/5.8/Config.pm)
 
 # They may have been overridden via Makefile.PL or on the command line
 AR = ar
 CC = cc
-CCCDLFLAGS =  
-CCDLFLAGS =  
-DLEXT = bundle
-DLSRC = dl_dyld.xs
-LD = env MACOSX_DEPLOYMENT_TARGET=10.3 cc
-LDDLFLAGS =  -bundle -undefined dynamic_lookup
-LDFLAGS = 
-LIBC = /usr/lib/libc.dylib
+CCCDLFLAGS = -fPIC
+CCDLFLAGS = -Wl,-E
+DLEXT = so
+DLSRC = dl_dlopen.xs
+LD = cc
+LDDLFLAGS = -shared -L/usr/local/lib
+LDFLAGS =  -L/usr/local/lib
+LIBC = /lib/libc-2.3.2.so
 LIB_EXT = .a
 OBJ_EXT = .o
-OSNAME = darwin
-OSVERS = 7.5.0
-RANLIB = /usr/bin/ar ts
-SITELIBEXP = /opt/perl-5.8.5/lib/site_perl/5.8.5
-SITEARCHEXP = /opt/perl-5.8.5/lib/site_perl/5.8.5/darwin-2level
-SO = dylib
+OSNAME = linux
+OSVERS = 2.6.8.1
+RANLIB = :
+SITELIBEXP = /usr/local/share/perl/5.8.4
+SITEARCHEXP = /usr/local/lib/perl/5.8.4
+SO = so
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
-VENDORARCHEXP = 
-VENDORLIBEXP = 
+VENDORARCHEXP = /usr/lib/perl5
+VENDORLIBEXP = /usr/share/perl5
 
 
 # --- MakeMaker constants section:
@@ -58,11 +58,11 @@ AR_STATIC_ARGS = cr
 DIRFILESEP = /
 NAME = Cache::Simple::TimedExpiry
 NAME_SYM = Cache_Simple_TimedExpiry
-VERSION = 0.21
+VERSION = 0.23
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_21
+VERSION_SYM = 0_23
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.21
+XS_VERSION = 0.23
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -71,56 +71,56 @@ INST_BIN = blib/bin
 INST_LIB = blib/lib
 INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
-MAN1EXT = 1
-MAN3EXT = 3
+MAN1EXT = 1p
+MAN3EXT = 3pm
 INSTALLDIRS = site
 DESTDIR = 
-PREFIX = 
-PERLPREFIX = /opt/perl-5.8.5
-SITEPREFIX = /opt/perl-5.8.5
-VENDORPREFIX = 
-INSTALLPRIVLIB = $(PERLPREFIX)/lib/5.8.5
+PREFIX = /usr
+PERLPREFIX = $(PREFIX)
+SITEPREFIX = $(PREFIX)/local
+VENDORPREFIX = $(PREFIX)
+INSTALLPRIVLIB = $(PERLPREFIX)/share/perl/5.8
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = $(SITEPREFIX)/lib/site_perl/5.8.5
+INSTALLSITELIB = $(SITEPREFIX)/share/perl/5.8.4
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = 
+INSTALLVENDORLIB = $(VENDORPREFIX)/share/perl5
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = $(PERLPREFIX)/lib/5.8.5/darwin-2level
+INSTALLARCHLIB = $(PERLPREFIX)/lib/perl/5.8
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = $(SITEPREFIX)/lib/site_perl/5.8.5/darwin-2level
+INSTALLSITEARCH = $(SITEPREFIX)/lib/perl/5.8.4
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = 
+INSTALLVENDORARCH = $(VENDORPREFIX)/lib/perl5
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
 INSTALLBIN = $(PERLPREFIX)/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
 INSTALLSITEBIN = $(SITEPREFIX)/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = 
+INSTALLVENDORBIN = $(VENDORPREFIX)/bin
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
 INSTALLSCRIPT = $(PERLPREFIX)/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLMAN1DIR = $(PERLPREFIX)/man/man1
+INSTALLMAN1DIR = $(PERLPREFIX)/share/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
 INSTALLSITEMAN1DIR = $(SITEPREFIX)/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = 
+INSTALLVENDORMAN1DIR = $(VENDORPREFIX)/share/man/man1
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = $(PERLPREFIX)/man/man3
+INSTALLMAN3DIR = $(PERLPREFIX)/share/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
 INSTALLSITEMAN3DIR = $(SITEPREFIX)/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = 
+INSTALLVENDORMAN3DIR = $(VENDORPREFIX)/share/man/man3
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /opt/perl-5.8.5/lib/5.8.5
-PERL_ARCHLIB = /opt/perl-5.8.5/lib/5.8.5/darwin-2level
+PERL_LIB = /usr/share/perl/5.8
+PERL_ARCHLIB = /usr/lib/perl/5.8
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = $(FIRST_MAKEFILE).old
 MAKE_APERL_FILE = $(FIRST_MAKEFILE).aperl
 PERLMAINCC = $(CC)
-PERL_INC = /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE
-PERL = /opt/perl-5.8.5/bin/perl -Iinc
-FULLPERL = /opt/perl-5.8.5/bin/perl -Iinc
+PERL_INC = /usr/lib/perl/5.8/CORE
+PERL = /usr/bin/perl -Iinc
+FULLPERL = /usr/bin/perl -Iinc
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -132,7 +132,7 @@ PERL_CORE = 0
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /opt/perl-5.8.5/lib/5.8.5/ExtUtils/MakeMaker.pm
+MAKEMAKER   = /usr/share/perl/5.8/ExtUtils/MakeMaker.pm
 MM_VERSION  = 6.17
 MM_REVISION = 1.133
 
@@ -243,7 +243,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Cache-Simple-TimedExpiry
-DISTVNAME = Cache-Simple-TimedExpiry-0.21
+DISTVNAME = Cache-Simple-TimedExpiry-0.23
 
 
 # --- MakeMaker macro section:
@@ -311,21 +311,21 @@ config :: $(INST_ARCHAUTODIR)$(DIRFILESEP).exists
 config :: $(INST_AUTODIR)$(DIRFILESEP).exists
 	$(NOECHO) $(NOOP)
 
-$(INST_AUTODIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
+$(INST_AUTODIR)/.exists :: /usr/lib/perl/5.8/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_AUTODIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_AUTODIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /usr/lib/perl/5.8/CORE/perl.h $(INST_AUTODIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_AUTODIR)
 
-$(INST_LIBDIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
+$(INST_LIBDIR)/.exists :: /usr/lib/perl/5.8/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_LIBDIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_LIBDIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /usr/lib/perl/5.8/CORE/perl.h $(INST_LIBDIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_LIBDIR)
 
-$(INST_ARCHAUTODIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
+$(INST_ARCHAUTODIR)/.exists :: /usr/lib/perl/5.8/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_ARCHAUTODIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_ARCHAUTODIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /usr/lib/perl/5.8/CORE/perl.h $(INST_ARCHAUTODIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_ARCHAUTODIR)
 
@@ -333,9 +333,9 @@ config :: $(INST_MAN3DIR)$(DIRFILESEP).exists
 	$(NOECHO) $(NOOP)
 
 
-$(INST_MAN3DIR)/.exists :: /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h
+$(INST_MAN3DIR)/.exists :: /usr/lib/perl/5.8/CORE/perl.h
 	$(NOECHO) $(MKPATH) $(INST_MAN3DIR)
-	$(NOECHO) $(EQUALIZE_TIMESTAMP) /opt/perl-5.8.5/lib/5.8.5/darwin-2level/CORE/perl.h $(INST_MAN3DIR)/.exists
+	$(NOECHO) $(EQUALIZE_TIMESTAMP) /usr/lib/perl/5.8/CORE/perl.h $(INST_MAN3DIR)/.exists
 
 	-$(NOECHO) $(CHMOD) $(PERM_RWX) $(INST_MAN3DIR)
 
@@ -386,7 +386,7 @@ POD2MAN = $(POD2MAN_EXE)
 manifypods : pure_all  \
 	lib/Cache/Simple/TimedExpiry.pm \
 	lib/Cache/Simple/TimedExpiry.pm
-	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW)\
+	$(NOECHO) $(POD2MAN) --section=3pm --perm_rw=$(PERM_RW)\
 	  lib/Cache/Simple/TimedExpiry.pm $(INST_MAN3DIR)/Cache::Simple::TimedExpiry.$(MAN3EXT) 
 
 
@@ -541,9 +541,7 @@ doc__install : doc_site_install
 	$(NOECHO) $(ECHO) INSTALLDIRS not defined, defaulting to INSTALLDIRS=site
 
 pure_perl_install ::
-	$(NOECHO) $(MOD_INSTALL) \
-		read $(PERL_ARCHLIB)/auto/$(FULLEXT)/.packlist \
-		write $(DESTINSTALLARCHLIB)/auto/$(FULLEXT)/.packlist \
+	$(NOECHO) umask 022; $(MOD_INSTALL) \
 		$(INST_LIB) $(DESTINSTALLPRIVLIB) \
 		$(INST_ARCHLIB) $(DESTINSTALLARCHLIB) \
 		$(INST_BIN) $(DESTINSTALLBIN) \
@@ -555,7 +553,7 @@ pure_perl_install ::
 
 
 pure_site_install ::
-	$(NOECHO) $(MOD_INSTALL) \
+	$(NOECHO) umask 02; $(MOD_INSTALL) \
 		read $(SITEARCHEXP)/auto/$(FULLEXT)/.packlist \
 		write $(DESTINSTALLSITEARCH)/auto/$(FULLEXT)/.packlist \
 		$(INST_LIB) $(DESTINSTALLSITELIB) \
@@ -568,9 +566,7 @@ pure_site_install ::
 		$(PERL_ARCHLIB)/auto/$(FULLEXT)
 
 pure_vendor_install ::
-	$(NOECHO) $(MOD_INSTALL) \
-		read $(VENDORARCHEXP)/auto/$(FULLEXT)/.packlist \
-		write $(DESTINSTALLVENDORARCH)/auto/$(FULLEXT)/.packlist \
+	$(NOECHO) umask 022; $(MOD_INSTALL) \
 		$(INST_LIB) $(DESTINSTALLVENDORLIB) \
 		$(INST_ARCHLIB) $(DESTINSTALLVENDORARCH) \
 		$(INST_BIN) $(DESTINSTALLVENDORBIN) \
@@ -579,37 +575,19 @@ pure_vendor_install ::
 		$(INST_MAN3DIR) $(DESTINSTALLVENDORMAN3DIR)
 
 doc_perl_install ::
-	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLARCHLIB)/perllocal.pod
-	-$(NOECHO) $(MKPATH) $(DESTINSTALLARCHLIB)
-	-$(NOECHO) $(DOC_INSTALL) \
-		"Module" "$(NAME)" \
-		"installed into" "$(INSTALLPRIVLIB)" \
-		LINKTYPE "$(LINKTYPE)" \
-		VERSION "$(VERSION)" \
-		EXE_FILES "$(EXE_FILES)" \
-		>> $(DESTINSTALLARCHLIB)/perllocal.pod
 
 doc_site_install ::
-	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLARCHLIB)/perllocal.pod
-	-$(NOECHO) $(MKPATH) $(DESTINSTALLARCHLIB)
-	-$(NOECHO) $(DOC_INSTALL) \
+	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLSITEARCH)/perllocal.pod
+	-$(NOECHO) umask 02; $(MKPATH) $(DESTINSTALLSITEARCH)
+	-$(NOECHO) umask 02; $(DOC_INSTALL) \
 		"Module" "$(NAME)" \
 		"installed into" "$(INSTALLSITELIB)" \
 		LINKTYPE "$(LINKTYPE)" \
 		VERSION "$(VERSION)" \
 		EXE_FILES "$(EXE_FILES)" \
-		>> $(DESTINSTALLARCHLIB)/perllocal.pod
+		>> $(DESTINSTALLSITEARCH)/perllocal.pod
 
 doc_vendor_install ::
-	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLARCHLIB)/perllocal.pod
-	-$(NOECHO) $(MKPATH) $(DESTINSTALLARCHLIB)
-	-$(NOECHO) $(DOC_INSTALL) \
-		"Module" "$(NAME)" \
-		"installed into" "$(INSTALLVENDORLIB)" \
-		LINKTYPE "$(LINKTYPE)" \
-		VERSION "$(VERSION)" \
-		EXE_FILES "$(EXE_FILES)" \
-		>> $(DESTINSTALLARCHLIB)/perllocal.pod
 
 
 uninstall :: uninstall_from_$(INSTALLDIRS)dirs
@@ -654,7 +632,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /opt/perl-5.8.5/bin/perl
+FULLPERL      = /usr/bin/perl
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) -f $(MAKE_APERL_FILE) $@
@@ -694,13 +672,13 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd:
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,21,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,23,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A lightweight cache with timed expiration</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Robert Spier &lt;rspier@pobox.com&gt;, Jesse Vincent &lt;jesse@bestpractical.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <OS NAME="$(OSNAME)" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-2level" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i386-linux-thread-multi" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

@@ -13,9 +13,9 @@ is ($h->expire_after(),2);
 $h->expire_after(10);
 is ($h->expire_after(),10);
 
-$h->set( 'Temp' => 'Temporary');
+$h->store( 'Temp' => 'Temporary');
 sleep(8);
-$h->set( 'Temp2' => 'Temporary2');
+$h->store( 'Temp2' => 'Temporary2');
 is ($h->fetch('Temp'), 'Temporary');
 is ($h->fetch('Temp2'), 'Temporary2');
 my @elements = sort $h->elements;
@@ -42,8 +42,8 @@ is ($h->has_key('Temp'), 0);
 
 $h->expire_after(2);
 is ($h->has_key(), 0);
-$h->set( '' => 'WithEmptyKey');
-$h->set( 0 => 'WithZeroKey');
+$h->store( '' => 'WithEmptyKey');
+$h->store( 0 => 'WithZeroKey');
 is ($h->fetch(''), 'WithEmptyKey' );
 is ($h->fetch(0), 'WithZeroKey' );
 is ($h->has_key(''), 1);

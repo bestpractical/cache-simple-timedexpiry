@@ -3,7 +3,7 @@ use strict;
 
 use vars qw/$VERSION/;
 
-$VERSION = '0.22';
+$VERSION = '0.23';
 
 # 0 - expiration delay
 # 1 - hash
@@ -55,7 +55,11 @@ sub has_key ($$) { # exists
 Return the cache entry with key KEY.
 Returns undef if there is no such entry
 
+(Can also be called as L<get>)
+
 =cut
+
+*get = \&fetch;
 
 sub fetch ($$) {
   my ($self,$key) = @_;
@@ -71,14 +75,18 @@ sub fetch ($$) {
 
 }
 
-=head2 set KEY VALUE
+=head2 store KEY VALUE
 
 Store VALUE in the cache with accessor KEY.  Expire it from the cache 
 at or after EXPIRYTIME.
 
+(Can also be called as L<set>)
+
 =cut
 
-sub set ($$$) {
+*set = \&store;
+
+sub store ($$$) {
   my ($self,$key,$value) = @_;
 
   my $time = time;

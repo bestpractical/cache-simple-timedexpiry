@@ -1,3 +1,7 @@
+0.23 Tue Jan 18 08:31:03 EST 2005
+    - Switch to fetch/store instead of fetch/set (recommended by Ruslan)
+      (Also support get/set as aliases)
+
 0.22
     - Minor doc fixes
     - Try harder not to invoke "expire" multiple times in the same second.
