@@ -3,7 +3,7 @@ use strict;
 
 use vars qw/$VERSION/;
 
-$VERSION = '0.21';
+$VERSION = '0.22';
 
 # 0 - expiration delay
 # 1 - hash
@@ -154,6 +154,13 @@ print $h->elements;
 $h->dump;
 
 print time;
+
+=head1 AUTHOR
+
+Jesse Vincent <jesse@bestpractical.com>
+Some of the heavy lifting was designed by Robert Spier <rspier@pobox.com>
+
+Copyright 2004 Jesse Vincent <jesse@bestpractical.com>
 
 =cut
 

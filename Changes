@@ -1,0 +1,3 @@
+0.22
+    - Minor doc fixes
+    - Try harder not to invoke "expire" multiple times in the same second.
