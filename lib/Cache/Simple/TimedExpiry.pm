@@ -71,7 +71,7 @@ sub fetch ($$) {
 
 }
 
-=head2 store KEY VALUE
+=head2 set KEY VALUE
 
 Store VALUE in the cache with accessor KEY.  Expire it from the cache 
 at or after EXPIRYTIME.
