@@ -4,19 +4,23 @@ use_ok('Cache::Simple::TimedExpiry');
 
 my $h = new Cache::Simple::TimedExpiry;
 
+is ($h->expire_after(),2);
+$h->expire_after(10);
+is ($h->expire_after(),10);
+
 is(ref($h), 'Cache::Simple::TimedExpiry');
 
-$h->set( Forever => "Don't expire", 0);
-
-is ($h->fetch('Forever'), "Don't expire");
-
-$h->set( 'Temp' => 'Temporary', 2);
-;
+$h->set( 'Temp' => 'Temporary');
+sleep(8);
+$h->set( 'Temp2' => 'Temporary');
 is ($h->fetch('Temp'), 'Temporary');
+is ($h->fetch('Temp2'), 'Temporary');
+sleep(5);
 
-sleep 3;
 
+is ($h->fetch('Temp2'), 'Temporary');
 is ($h->fetch('Temp'), undef);
 
-is ($h->fetch('Forever'), "Don't expire");
+sleep(6);
+is ($h->fetch('Temp2'), undef);
 
