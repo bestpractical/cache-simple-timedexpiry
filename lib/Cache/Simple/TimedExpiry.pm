@@ -4,7 +4,7 @@ use strict;
 
 use vars qw/$VERSION/;
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 
 # 0 - expiration delay
 # 1 - hash
@@ -46,7 +46,7 @@ Return true if the cache has an entry with the key KEY
 sub has_key ($$) { # exists
   my ($self, $key) = @_;
   
-  return 1 if  $key && exists $self->[1]->{$key};
+  return 1 if defined $key && exists $self->[1]->{$key};
   return 0;
 }
 
@@ -99,7 +99,7 @@ sub expire ($) {
 
   while ( @{$self->[2]} && $self->[2]->[0]->[0] <$oldest_nonexpired_entry ) {
     my $key =  $self->[2]->[0]->[1];
-    delete $self->[1]->{ $key } if exists $self->[1]->{$key};
+    delete $self->[1]->{ $key };
     shift @{$self->[2]};
   }
 
