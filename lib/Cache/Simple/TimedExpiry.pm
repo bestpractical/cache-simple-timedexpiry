@@ -88,11 +88,11 @@ at or after EXPIRYTIME.
 
 sub store ($$$) {
   my ($self,$key,$value) = @_;
-
   my $time = time;
   # Only expire 
   $self->expire($time) if ($time > $self->[3]);
 
+  return undef unless ($key);
   $self->[1]->{$key} = $value;
 
     push @{$self->[2]}, [ time, $key ];
