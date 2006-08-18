@@ -3,7 +3,7 @@ use strict;
 
 use vars qw/$VERSION/;
 
-$VERSION = '0.23';
+$VERSION = '0.24';
 
 # 0 - expiration delay
 # 1 - hash
