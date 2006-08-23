@@ -1,9 +1,10 @@
 package Cache::Simple::TimedExpiry;
+use warnings;
 use strict;
 
 use vars qw/$VERSION/;
 
-$VERSION = '0.24';
+$VERSION = '0.25';
 
 # 0 - expiration delay
 # 1 - hash
@@ -92,7 +93,7 @@ sub store ($$$) {
   # Only expire 
   $self->expire($time) if ($time > $self->[3]);
 
-  return undef unless ($key);
+  return undef unless defined ($key);
   $self->[1]->{$key} = $value;
 
     push @{$self->[2]}, [ time, $key ];
