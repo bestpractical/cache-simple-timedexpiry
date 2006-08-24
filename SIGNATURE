@@ -14,9 +14,9 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 61a1ece3948d88de09be367a2ad0f73d56df4822 Changes
+SHA1 c078f6e4e1560ebd4bb85043c741a387a0565160 Changes
 SHA1 22ead3d088374505eb6fd289301809507191610e MANIFEST
-SHA1 e1c2534c55ce0986e16eb0a8da689dda4da999a9 META.yml
+SHA1 8a330de2ee356a5ea9ea79ff816e7efe03bbc1a9 META.yml
 SHA1 1c7f2a080b159adcfacd9bea57b80751ff796eef Makefile.PL
 SHA1 017bedfcba1e0c72b36301e6ef21b8712b84d175 inc/Module/Install.pm
 SHA1 b1a70869c098ba602151631386fc510b5bfd3511 inc/Module/Install/Base.pm
@@ -26,12 +26,12 @@ SHA1 176d68fe7c07b6ab7cfe09093078b8127bbde786 inc/Module/Install/Makefile.pm
 SHA1 8b37b38215d14f922b3d5132ce33d11d21d531ba inc/Module/Install/Metadata.pm
 SHA1 7eb44b00058c44795038d7fa4c0c77470f20a7f8 inc/Module/Install/Win32.pm
 SHA1 6d05967a5e1680b5f118315aaa6b8a1e143d79d8 inc/Module/Install/WriteAll.pm
-SHA1 8f9d62cf44d2550b4e237db940709459b1d5b2f8 lib/Cache/Simple/TimedExpiry.pm
+SHA1 ece0ec7452bd1cc5508c7b7f1ef2034c5299fe50 lib/Cache/Simple/TimedExpiry.pm
 SHA1 b43f5a5c5193c15d8aa1f428ff5a34108257e0b9 t/01basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.3 (Darwin)
 
-iD8DBQFE6+b+Ei9d9xCOQEYRAggUAJ0bVR6achr7hx+EwIJbREMSyX8MXwCgrRO+
-SZQkHtvR46R1BRuKObT4aYo=
-=sCRJ
+iD8DBQFE7iU5Ei9d9xCOQEYRApJKAKC5QUCGkMAUCedkZlSAAlbs34rbRACeM0gZ
+nX/N/8M2zQao8rWYp/2numM=
+=bm1K
 -----END PGP SIGNATURE-----
