@@ -6,6 +6,35 @@ use vars qw/$VERSION/;
 
 $VERSION = '0.26';
 
+=head1 NAME
+
+Cache::Simple::TimedExpiry
+
+=head2 EXAMPLE 
+
+ package main; 
+
+ use strict; 
+ use warnings;
+ $,=' '; $|++;
+
+ use Cache::Simple::TimedExpiry;
+ my $h =  Cache::Simple::TimedExpiry->new;
+
+ $h->set( DieQuick => "No duration!", 0); 
+ print $h->elements;
+ do { $h->set($_,"Value of $_", 1); sleep 2;} 
+    for qw(Have a nice day you little monkey); 
+
+
+ print $h->elements; $h->dump; sleep 4; print $h->elements; $h->dump;
+
+ print time;
+
+
+=cut
+
+
 # 0 - expiration delay
 # 1 - hash
 # 2 - expiration queue
@@ -137,32 +166,6 @@ sub dump ($) {
 }
 
 
-
-=head1 NAME
-
-Cache::Simple::TimedExpiry
-
-=head2 EXAMPLE 
-
-package main;
-use strict;
-use warnings;
-
-
-my $h = new Cache::Simple::TimedExpiry;
-
-$h->set( Forever => "Don't expire", 0);
-do { $h->set($_,"Value of $_", 1); sleep 2;}  for
-  qw(Have a nice day you little monkey);
-$,=' ';
-
-print $h->elements;
-$h->dump;
-sleep 4;
-print $h->elements;
-$h->dump;
-
-print time;
 
 =head1 AUTHOR
 
