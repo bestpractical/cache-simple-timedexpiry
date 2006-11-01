@@ -1,4 +1,4 @@
-use Test::More qw/no_plan/;
+use Test::More tests => 27;
 
 use_ok('Cache::Simple::TimedExpiry');
 
