@@ -1,4 +1,5 @@
-
+0.27 Mon Nov 20 17:06:59 EST 2006
+    - Moved an expire check to has_key
     - Doc updates from Terrence Brannon (metaperl)
 
 0.26 Thu Aug 24 18:16:08 EDT 2006
